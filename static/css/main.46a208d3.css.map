@@ -1,1 +1,0 @@
-{"version":3,"sources":["main.css"],"names":[],"mappings":"AAAA,KACE,eACA,iCAAsC,CAGxC,MACE,gBACA,cAAgB","file":"static/css/main.46a208d3.css","sourcesContent":["html {\n  font-size: 22px;\n  font-family: 'Cutive Mono', monospace;\n}\n\n#root {\n  font-weight: bold;\n  font-size: 1rem;\n}\n\n\n// WEBPACK FOOTER //\n// ./src/main.css"],"sourceRoot":""}
