@@ -7,7 +7,6 @@ import Header from './Components/Header';
 import Footer from './Components/Footer';
 
 import 'glamor/reset';
-import './main.css';
 
 const Main = glamorous.div({
   minHeight: '100vh',
@@ -17,7 +16,10 @@ const Main = glamorous.div({
   flexDirection: 'column',
   alignItems: 'center',
   backgroundImage: 'linear-gradient(60deg, #29323c 0%, #485563 100%)',
-  color: '#eee'
+  color: '#eee',
+  fontSize: '22px',
+  fontWeight: 'bold',
+  fontFamily: '"Cutive Mono", monospace'
 });
 
 ReactDOM.render(
