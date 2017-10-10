@@ -1,4 +1,6 @@
 import React, { PureComponent } from 'react';
+import PropTypes from 'prop-types';
+import Immutable from 'immutable';
 import glamorous, { Div } from 'glamorous';
 
 const Root = glamorous.div({
@@ -17,7 +19,6 @@ const RowData = glamorous.span({
 });
 
 class Codes extends PureComponent {
-
   render () {
     const {
       onCodeHover,
@@ -51,6 +52,12 @@ class Codes extends PureComponent {
       </Root>
     );
   }
+}
+
+Codes.propTypes = {
+  onCodeHover: PropTypes.func.isRequired,
+  onCodeClick: PropTypes.func.isRequired,
+  data: PropTypes.instanceOf(Immutable.list).isRequired
 }
 
 export default Codes;

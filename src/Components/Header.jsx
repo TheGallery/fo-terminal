@@ -10,17 +10,25 @@ const OverseerFont = css.fontFace({
 });
 
 const Root = glamorous.div({
-  fontFamily: OverseerFont,
-  fontSize: '3rem',
   textAlign: 'center',
-  textTransform: 'uppercase',
-  margin: '10px 0'
+  margin: '10px 40px',
+  borderBottom: 'dotted 1px'
+});
+
+const Title = glamorous.span({
+  fontFamily: OverseerFont,
+  fontSize: '3rem'
+});
+
+const Link = glamorous.a({
+  color: 'inherit'
 });
 
 function Header () {
   return (
-    <Root>
-      Fallout Terminal
+    <Root marginLeft={40} marginTop={40}>
+      <Title>Fallout Terminal </Title> 
+      by <Link href='http://www.iopsychas.me' target='_blank'>iopsychas</Link>
     </Root>
   );
 }

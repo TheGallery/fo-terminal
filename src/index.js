@@ -1,12 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import glamorous from 'glamorous';
+import 'glamor/reset';
 
 import Terminal from './Components/Terminal';
-import Header from './Components/Header';
-import Footer from './Components/Footer';
-
-import 'glamor/reset';
 
 const Main = glamorous.div({
   minHeight: '100vh',
@@ -24,9 +21,7 @@ const Main = glamorous.div({
 
 ReactDOM.render(
   <Main>
-    <Header />
     <Terminal />
-    <Footer />
   </Main>,
   document.getElementById('root')
 );

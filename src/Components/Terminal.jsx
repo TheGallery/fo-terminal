@@ -3,14 +3,13 @@ import glamorous, { Div } from 'glamorous';
 import { List } from 'immutable';
 import _findIndex from 'lodash/findIndex';
 
+import Header from './Header';
 import Attempts from './Attempts';
 import Codes from './Codes';
 import Commands from './Commands';
 
 import { initTerminal, getLikeness, removeCode } from '../terminal';
 
-
-// 950x900
 const Root = glamorous.div({
   width: '900px',
   height: '700px',
@@ -42,6 +41,8 @@ const Terminated = glamorous.div({
   justifyContent: 'center',
   alignItems: 'center'
 }, ({visible}) => ({display: visible ? 'flex' : 'none'}))
+
+
 
 class Terminal extends Component {
   state = {
@@ -83,6 +84,7 @@ class Terminal extends Component {
     // There is a chance the user tries will reset instead of removing a dud
     const isReset = (Math.random() <= 0.1);
 
+    // Remove the dudRm from the terminal
     let terminal = terminalState.withMutations(term => {
       term.updateIn(['data', dataIndex, 'content', 'codes', codeIndex],
         code => removeCode(code)
@@ -96,17 +98,17 @@ class Terminal extends Component {
         terminal
       }));
     } else {
-      // Pick a random word
-      const word = terminalState.getIn([
+      // Pick a random password to remove
+      const password = terminalState.getIn([
         'passwords',
         Math.floor(Math.random() * terminalState.get('passwords').size)
       ]);
 
       let codeIndex = -1;
 
-      // Find the index of the random word in the data
+      // Find the index of the random password in the data
       const dataIndex = _findIndex(terminalState.get('data').toJS(), data => {
-        const idx = data.content.codes.indexOf(word);
+        const idx = data.content.codes.indexOf(password);
 
         if (!~idx) return false;
 
@@ -116,11 +118,11 @@ class Terminal extends Component {
       });
 
       this.setState(({history}) => ({
-        // Update the data with the removed word
+        // Update the data with the removed password
         terminal: terminal.withMutations(term => {
           term.updateIn(['data', dataIndex, 'content', 'codes', codeIndex],
             code => removeCode(code, true)
-          ).update('passwords', passwords => passwords.filter(p => p !== word))
+          ).update('passwords', passwords => passwords.filter(p => p !== password))
         }),
         history: history.push(dudRm, 'Dud Removed.')
       }));
@@ -130,11 +132,11 @@ class Terminal extends Component {
   onPasswordClick = (password) => {
     const { terminal } = this.state;
 
+    // If it's a password that has already been removed, do nothing
     if (!~terminal.get('passwords').indexOf(password) &&
           password !== terminal.get('validPassword')) return;
 
     if (password === terminal.get('validPassword')) {
-      console.log('Valid AF');
       this.setState({
         hacked: true
       });
@@ -152,10 +154,8 @@ class Terminal extends Component {
     return (
       <Root>
         <Working visible={this.state.attempts && !this.state.hacked}>
-          <Div marginLeft={40} marginTop={40}>
-            <div>Welcome to ROBCO Industries (TM) Termlink</div>
-            <div>Password Required</div>
-          </Div>
+          <Header />
+          <Div marginLeft='40px'>Password Required</Div>
           <Attempts attempts={this.state.attempts} />
           <MainContainer>
             <Codes

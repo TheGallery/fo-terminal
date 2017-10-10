@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import glamorous from 'glamorous';
 
 const Root = glamorous.div({
@@ -26,5 +28,9 @@ function Attempts ({attempts}) {
     </Root>
   );
 }
+
+Attempts.propTypes = {
+  attempts: PropTypes.number.isRequired
+};
 
 export default Attempts;

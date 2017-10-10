@@ -4,6 +4,8 @@ import words from './words';
 
 const ROW_COUNT = 40;
 const ROW_LENGTH = 15;
+// Pick a random password array
+const PASSWORDS = words[Math.floor(Math.random() * words.length)]
 
 function generateMemoryAddresses () {
   // 5000-9000 will always return 4digit hexes
@@ -22,7 +24,7 @@ function generateMemoryAddresses () {
 
 function generateMemoryContent () {
   // The amount of passwords in the terminal
-  const passwordCount = 6;
+  const passwordCount = PASSWORDS.length;
   // The amount of dud removals, must be less than the password amount
   const dudRmCount = Math.floor(Math.random() * ((passwordCount - 1) - 2) + 2);
   // The rest of the content (rows without dud removals or passwords)
@@ -44,15 +46,11 @@ function generateMemoryContent () {
 
 // Generate strings without dud removals or words
 function generateCommonCodes (count) {
-  const chars = '!@#$%^*()-_=[]{}|;:\'",.<>\\';
-
   return Array.from({length: count}).map(() => {
     let codes;
 
     do {
-      codes = Array.from({length: ROW_LENGTH}).map(() => {
-        return chars[Math.floor(Math.random() * chars.length)];
-      });
+      codes = generateRandomStringArray(ROW_LENGTH);
     } while (hasDudRm(codes.join('')));
 
     return {
@@ -63,7 +61,6 @@ function generateCommonCodes (count) {
 }
 
 function generateDudRm (count) {
-  const chars = '!@#$%^*()-_=[]{}|;:\'",.<>\\';
   let dudRmsList = [];
 
   const dudRms = Array.from({length: count}).map(() => {
@@ -71,9 +68,7 @@ function generateDudRm (count) {
     let dud;
 
     do {
-      dudRm = Array.from({length: ROW_LENGTH}).map(() => {
-        return chars[Math.floor(Math.random() * chars.length)];
-      });
+      dudRm = generateRandomStringArray(ROW_LENGTH);
 
       dud = hasDudRm(dudRm.join(''), true);
     } while (!dud);
@@ -100,26 +95,23 @@ function generateDudRm (count) {
 }
 
 function generatePasswordContent (count) {
-  const chars = '!@#$%^*()-_=[]{}|;:\'",.<>\\';
   let passwordsList = [];
 
-  const passwords = words[0].map(word => {
+  const passwords = PASSWORDS.map(word => {
     let codes;
 
     do {
-      codes = Array.from({length: ROW_LENGTH - word.length}).map(() => {
-        return chars[Math.floor(Math.random() * chars.length)];
-      });
+      codes = _shuffle([
+        ...generateRandomStringArray(ROW_LENGTH - word.length),
+        word.toUpperCase()
+      ]);
     } while (hasDudRm(codes.join('')));
 
     passwordsList.push(word.toUpperCase());
 
     return {
       type: 'password',
-      codes: _shuffle([
-        ...codes,
-        word.toUpperCase()
-      ])
+      codes
     };
   });
 
@@ -143,6 +135,14 @@ function hasDudRm (str, withDudRm) {
   }
 
   return false;
+}
+
+function generateRandomStringArray (length) {
+  const chars = '!@#$%^*()-_=[]{}|;:\'",.<>\\';
+
+  return Array.from({length}).map(() => {
+    return chars[Math.floor(Math.random() * chars.length)];
+  });
 }
 
 export function initTerminal () {
