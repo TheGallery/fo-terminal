@@ -57,7 +57,7 @@ class Codes extends PureComponent {
 Codes.propTypes = {
   onCodeHover: PropTypes.func.isRequired,
   onCodeClick: PropTypes.func.isRequired,
-  data: PropTypes.instanceOf(Immutable.list).isRequired
+  data: PropTypes.instanceOf(Immutable.List).isRequired
 }
 
 export default Codes;
