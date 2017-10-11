@@ -20,7 +20,11 @@ const Root = glamorous.div({
   textShadow: '0 0 10px rgba(49, 145, 63, 1)',
   cursor: `url(${process.env.PUBLIC_URL}/cursor.png), auto`,
   border: 'solid 20px #616161',
-  boxShadow: '0 15px 5px -5px #273140'
+  boxShadow: '0 15px 5px -5px #273140',
+  display: 'block',
+  '@media only screen and (max-width: 950px)': {
+    display: 'none'
+  }
 });
 
 const Working = glamorous.div({

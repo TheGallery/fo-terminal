@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import glamorous from 'glamorous';
 import 'glamor/reset';
 
-import Terminal from './Components/Terminal';
+import Terminal from './components/Terminal';
+import TinyScreen from './components/TinyScreen';
 
 const Main = glamorous.div({
   minHeight: '100vh',
@@ -22,6 +23,7 @@ const Main = glamorous.div({
 ReactDOM.render(
   <Main>
     <Terminal />
+    <TinyScreen />
   </Main>,
   document.getElementById('root')
 );
