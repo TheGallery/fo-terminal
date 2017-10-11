@@ -8,7 +8,8 @@ const Root = glamorous.div({
   display: 'flex',
   flexDirection: 'column',
   justifyContent: 'flex-end',
-  overflow: 'hidden'
+  overflow: 'hidden',
+  paddingLeft: '10px'
 });
 
 function Commands ({command, history}) {

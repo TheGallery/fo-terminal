@@ -31,8 +31,9 @@ const Working = glamorous.div({
 
 const MainContainer = glamorous.div({
   margin: '10px 40px 40px 40px',
-  flex: '1',
-  display: 'flex'
+  flex: '1 1 auto',
+  display: 'flex',
+  height: '510px'
 });
 
 const Terminated = glamorous.div({
