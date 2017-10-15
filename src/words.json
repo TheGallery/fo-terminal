@@ -1,5 +1,17 @@
 [
-  [
-    "jazzy","fuzzy","muzzy" ,"whizz" ,"fezzy" ,"fizzy"
-  ]
+  ["jazzy","fuzzy","muzzy" ,"whizz" ,"fezzy" ,"fizzy"],
+  ["copper", "cinder", "certes", "robber", "normal", "temple"],
+  ["explain", "display", "headpin", "dungeon", "imogene"],
+  ["unite", "unify", "unshy", "usury", "until", "unlay", "unlay"],
+  ["incompetent", "unefficient", "improvident", "concomitant", "pathologist"],
+  ["separate", "decorate", "demising", "disarray", "suddenly", "subcover"],
+  ["parse", "parts", "paste", "rates", "spare", "spear", "strap", "tapes", "tears", "traps"],
+  ["cero", "cone", "conn", "core", "corn", "croc", "neon", "none", "once"],
+  ["exam", "lame", "lamp", "leap", "male", "meal", "pale", "palm", "peal", "peel"],
+  ["auctioned", "cautioned", "education", "casserole", "escaroles", "emigrants", "mastering", "streaming"],
+  ["pertness", "presents", "serpents", "repaints", "painters", "pantries", "pertains"],
+  ["decanter", "cantered", "recanted", "cratered", "retraced", "terraced", "designer", "redesign", "resigned"],
+  ["alerted", "altered", "related", "treadle", "darters", "retards", "starred", "traders"],
+  ["claimed", "decimal", "declaim", "medical", "capitol", "optical", "topical"],
+  ["pares", "parse", "pears", "reaps", "spare", "spear", "paste", "tapes", "peats", "septa", "spate"]  
 ]
